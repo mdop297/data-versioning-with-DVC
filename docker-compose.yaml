@@ -14,7 +14,7 @@ services:
     volumes:
       - ./:/app/
       - ~/.config/gcloud/:/home/${USER_NAME:-nhatminh}/.config/gcloud
-      # authenticate to git
+      # authenticate to git for linux
       - ~/.ssh:/home/${USER_NAME}/.ssh
     ports:
       #use jupyterlab with port 8888
