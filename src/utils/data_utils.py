@@ -1,11 +1,11 @@
 
 from pathlib import Path
 from subprocess import CalledProcessError
-
 from src.utils.utils import get_logger, run_shell_command
 
 
 DATA_UTILS_LOGGER = get_logger(Path(__file__).name)
+
 
 
 def is_dvc_initialized() -> bool:
@@ -45,7 +45,7 @@ def commit_to_dvc(dvc_raw_data_folder: str, dvc_remote_name: str) -> None:
     run_shell_command(f"git commit -nm 'Updated version of the data from v{current_version} to {next_version}'")
     run_shell_command(f"git tag -a {next_version} -m 'Data version {next_version}'")
     run_shell_command(f"dvc push {dvc_raw_data_folder}.dvc --remote {dvc_remote_name}")
-    run_shell_command("git push origin main --follow-tags")
+    run_shell_command("git push --follow-tags")
     run_shell_command("git push -f --tags")
 
 
